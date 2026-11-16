@@ -9,6 +9,7 @@ import pandas as pd
 
 from pipeline.clean import clean
 from pipeline.io import DATA, sha256, write_json
+from pipeline.rebuild import rebuild
 from pipeline.verify import verify
 
 
@@ -53,6 +54,30 @@ class CleaningTests(unittest.TestCase):
             write_json({'status': 'building'}, directory / 'build_status.json')
             with self.assertRaisesRegex(ValueError, 'incomplete'):
                 verify(directory)
+
+
+class RebuildTests(unittest.TestCase):
+    def test_included_hourly_data_reproduces_every_daily_and_period_value(self):
+        with tempfile.TemporaryDirectory() as name:
+            output = Path(name) / 'rebuilt'
+            original_manifest_hash = sha256(DATA / 'data_manifest.json')
+            report = rebuild(DATA, output)
+            self.assertEqual(report['files_verified'], 33)
+            self.assertNotEqual(report['dataset_version'], json.loads((DATA / 'data_manifest.json').read_text(encoding='utf-8'))['dataset_version'])
+            for table in ('city_daily.csv', 'site_daily.csv'):
+                a, b = (pd.read_csv(directory / table) for directory in (DATA, output))
+                np.testing.assert_allclose(a.pm25_ug_m3, b.pm25_ug_m3, atol=1e-9, rtol=0, equal_nan=True)
+                np.testing.assert_array_equal(a.valid_hours, b.valid_hours)
+                self.assertEqual(a.status.tolist(), b.status.tolist())
+            keys = ['source_level', 'object_id', 'period_kind', 'period', 'policy_id']
+            a, b = (pd.read_csv(directory / 'coverage.csv').sort_values(keys).reset_index(drop=True)
+                    for directory in (DATA, output))
+            self.assertEqual(a[keys].to_dict('records'), b[keys].to_dict('records'))
+            for column in ('mean', 'p90', 'median', 'valid_days', 'expected_days'):
+                np.testing.assert_allclose(a[column], b[column], atol=1e-9, rtol=0, equal_nan=True)
+            self.assertEqual(sha256(DATA / 'data_manifest.json'), original_manifest_hash)
+            with self.assertRaisesRegex(ValueError, 'empty'):
+                rebuild(DATA, output)
 
 
 if __name__ == '__main__':
