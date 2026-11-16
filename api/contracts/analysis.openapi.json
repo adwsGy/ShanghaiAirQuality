@@ -1,0 +1,1914 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "上海 PM2.5 分析接口设计",
+    "version": "0.1.0",
+    "description": "第一阶段设计契约，服务尚未实现。跨字段业务约束见接口与数据约定。"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000",
+      "description": "计划中的本地服务"
+    }
+  ],
+  "paths": {
+    "/api/v1/metadata": {
+      "get": {
+        "operationId": "getMetadata",
+        "summary": "读取版本、规则与站点元信息",
+        "responses": {
+          "200": {
+            "description": "查询成功，可能为空；状态和质量信息保留。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metadata"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "参数或业务约束不合法",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "数据或上下文版本冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "研究数据尚未就绪",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/analyze": {
+      "post": {
+        "operationId": "analyzeCity",
+        "summary": "全市范围分析与完整概览",
+        "responses": {
+          "200": {
+            "description": "查询成功，可能为空；状态和质量信息保留。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CityAnalysis"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "参数或业务约束不合法",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "数据或上下文版本冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "研究数据尚未就绪",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CityRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/city/detail": {
+      "post": {
+        "operationId": "getCityDetail",
+        "summary": "时段、月份日均或完整年份剖面",
+        "responses": {
+          "200": {
+            "description": "查询成功，可能为空；状态和质量信息保留。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CityDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "参数或业务约束不合法",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "数据或上下文版本冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "研究数据尚未就绪",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CityDetailRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/stations/compare": {
+      "post": {
+        "operationId": "compareStations",
+        "summary": "两期站点比较及排除原因",
+        "responses": {
+          "200": {
+            "description": "查询成功，可能为空；状态和质量信息保留。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationComparison"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "参数或业务约束不合法",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "数据或上下文版本冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "研究数据尚未就绪",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompareRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/stations/trends": {
+      "post": {
+        "operationId": "getStationTrends",
+        "summary": "最多三个站点的年度趋势",
+        "responses": {
+          "200": {
+            "description": "查询成功，可能为空；状态和质量信息保留。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StationTrends"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "参数或业务约束不合法",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "数据或上下文版本冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "研究数据尚未就绪",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrendsRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/exports": {
+      "post": {
+        "operationId": "exportCurrentResult",
+        "summary": "按原查询与上下文导出当前区域",
+        "responses": {
+          "200": {
+            "description": "UTF-8 BOM CSV，包含条件、统计、状态和样本。",
+            "headers": {
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Dataset-Version": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Context-Id": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "参数或业务约束不合法",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "数据或上下文版本冲突",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "研究数据尚未就绪",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExportRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DateRange": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "additionalProperties": false
+      },
+      "QualityStatus": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "insufficient_coverage",
+          "no_observations",
+          "source_unavailable",
+          "not_in_network",
+          "partial_period"
+        ]
+      },
+      "Statistic": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/QualityStatus"
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "valid_days": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "expected_days": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "coverage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "failed_months": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^20\\d{2}-(0[1-9]|1[0-2])$"
+            }
+          },
+          "source_locator": {
+            "type": "string",
+            "description": "研究数据清单中的可追溯定位标识，关联对象、日期范围与来源记录。"
+          }
+        },
+        "required": [
+          "value",
+          "status",
+          "reason_codes",
+          "valid_days",
+          "expected_days",
+          "coverage",
+          "failed_months",
+          "source_locator"
+        ],
+        "additionalProperties": false
+      },
+      "Metrics": {
+        "type": "object",
+        "properties": {
+          "mean": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "p90": {
+            "$ref": "#/components/schemas/Statistic"
+          }
+        },
+        "required": [
+          "mean",
+          "p90"
+        ],
+        "additionalProperties": false
+      },
+      "Bucket": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "string"
+          },
+          "range": {
+            "$ref": "#/components/schemas/DateRange"
+          },
+          "metrics": {
+            "$ref": "#/components/schemas/Metrics"
+          }
+        },
+        "required": [
+          "period",
+          "range",
+          "metrics"
+        ],
+        "additionalProperties": false
+      },
+      "HeatCell": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "minimum": 2015,
+            "maximum": 2025
+          },
+          "month": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "statistic": {
+            "$ref": "#/components/schemas/Statistic"
+          }
+        },
+        "required": [
+          "year",
+          "month",
+          "statistic"
+        ],
+        "additionalProperties": false
+      },
+      "DailyPoint": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "valid_hours": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 24
+          },
+          "status": {
+            "$ref": "#/components/schemas/QualityStatus"
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "value",
+          "valid_hours",
+          "status",
+          "reason_codes"
+        ],
+        "additionalProperties": false
+      },
+      "Scope": {
+        "type": "object",
+        "properties": {
+          "source_level": {
+            "type": "string",
+            "enum": [
+              "city_archive",
+              "site_archive"
+            ]
+          },
+          "city_id": {
+            "const": "shanghai"
+          },
+          "ranges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DateRange"
+            },
+            "minItems": 1
+          },
+          "station_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^\\d{4}[A-Z]$"
+            },
+            "uniqueItems": true
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_level",
+          "city_id",
+          "ranges",
+          "station_ids",
+          "label"
+        ],
+        "additionalProperties": false
+      },
+      "Warning": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "object_ids"
+        ],
+        "additionalProperties": false
+      },
+      "Scale": {
+        "type": "object",
+        "properties": {
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "unit": {
+            "const": "μg/m³"
+          },
+          "overflow_policy": {
+            "const": "clip_with_flag_and_exact_value"
+          }
+        },
+        "required": [
+          "min",
+          "max",
+          "unit",
+          "overflow_policy"
+        ],
+        "additionalProperties": false
+      },
+      "ColorScales": {
+        "type": "object",
+        "properties": {
+          "mean": {
+            "$ref": "#/components/schemas/Scale"
+          },
+          "p90": {
+            "$ref": "#/components/schemas/Scale"
+          }
+        },
+        "required": [
+          "mean",
+          "p90"
+        ],
+        "additionalProperties": false
+      },
+      "CityRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "analysis_range": {
+            "$ref": "#/components/schemas/DateRange"
+          },
+          "granularity": {
+            "type": "string",
+            "enum": [
+              "month",
+              "year"
+            ]
+          }
+        },
+        "required": [
+          "dataset_version",
+          "policy_id",
+          "analysis_range",
+          "granularity"
+        ],
+        "additionalProperties": false
+      },
+      "CityAnalysis": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "const": "0.1.0"
+          },
+          "dataset_version": {
+            "type": "string"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "empty"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Scope"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "manifest_id": {
+                "type": "string"
+              },
+              "rule_version": {
+                "type": "string"
+              },
+              "pipeline_version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "manifest_id",
+              "rule_version",
+              "pipeline_version"
+            ],
+            "additionalProperties": false
+          },
+          "overview": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Bucket"
+            }
+          },
+          "trend": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Bucket"
+            }
+          },
+          "heatmap": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeatCell"
+            }
+          },
+          "selected_range_summary": {
+            "$ref": "#/components/schemas/Metrics"
+          },
+          "color_scales": {
+            "$ref": "#/components/schemas/ColorScales"
+          }
+        },
+        "required": [
+          "contract_version",
+          "dataset_version",
+          "context_id",
+          "policy_id",
+          "status",
+          "scope",
+          "warnings",
+          "provenance",
+          "overview",
+          "trend",
+          "heatmap",
+          "selected_range_summary",
+          "color_scales"
+        ],
+        "additionalProperties": false
+      },
+      "RangeDetailRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "detail_mode": {
+            "const": "range"
+          },
+          "analysis_range": {
+            "$ref": "#/components/schemas/DateRange"
+          }
+        },
+        "required": [
+          "dataset_version",
+          "policy_id",
+          "detail_mode",
+          "analysis_range"
+        ],
+        "additionalProperties": false
+      },
+      "MonthDetailRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "detail_mode": {
+            "const": "month"
+          },
+          "month": {
+            "type": "string",
+            "pattern": "^20\\d{2}-(0[1-9]|1[0-2])$"
+          }
+        },
+        "required": [
+          "dataset_version",
+          "policy_id",
+          "detail_mode",
+          "month"
+        ],
+        "additionalProperties": false
+      },
+      "ProfilesDetailRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "detail_mode": {
+            "const": "profiles"
+          },
+          "years": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 2015,
+              "maximum": 2025
+            },
+            "minItems": 1,
+            "maxItems": 3,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "dataset_version",
+          "policy_id",
+          "detail_mode",
+          "years"
+        ],
+        "additionalProperties": false
+      },
+      "CityDetailRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RangeDetailRequest"
+          },
+          {
+            "$ref": "#/components/schemas/MonthDetailRequest"
+          },
+          {
+            "$ref": "#/components/schemas/ProfilesDetailRequest"
+          }
+        ]
+      },
+      "DailyDetail": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "const": "0.1.0"
+          },
+          "dataset_version": {
+            "type": "string"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "empty"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Scope"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "manifest_id": {
+                "type": "string"
+              },
+              "rule_version": {
+                "type": "string"
+              },
+              "pipeline_version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "manifest_id",
+              "rule_version",
+              "pipeline_version"
+            ],
+            "additionalProperties": false
+          },
+          "detail_mode": {
+            "type": "string",
+            "enum": [
+              "range",
+              "month"
+            ]
+          },
+          "daily": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailyPoint"
+            }
+          },
+          "summary": {
+            "$ref": "#/components/schemas/Metrics"
+          }
+        },
+        "required": [
+          "contract_version",
+          "dataset_version",
+          "context_id",
+          "policy_id",
+          "status",
+          "scope",
+          "warnings",
+          "provenance",
+          "detail_mode",
+          "daily",
+          "summary"
+        ],
+        "additionalProperties": false
+      },
+      "YearProfile": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "integer",
+            "minimum": 2015,
+            "maximum": 2025
+          },
+          "months": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeatCell"
+            },
+            "minItems": 12,
+            "maxItems": 12
+          },
+          "p90_by_month": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Statistic"
+            },
+            "minItems": 12,
+            "maxItems": 12
+          }
+        },
+        "required": [
+          "year",
+          "months",
+          "p90_by_month"
+        ],
+        "additionalProperties": false
+      },
+      "ProfileDetail": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "const": "0.1.0"
+          },
+          "dataset_version": {
+            "type": "string"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "empty"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Scope"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "manifest_id": {
+                "type": "string"
+              },
+              "rule_version": {
+                "type": "string"
+              },
+              "pipeline_version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "manifest_id",
+              "rule_version",
+              "pipeline_version"
+            ],
+            "additionalProperties": false
+          },
+          "detail_mode": {
+            "const": "profiles"
+          },
+          "profiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/YearProfile"
+            },
+            "minItems": 1,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "contract_version",
+          "dataset_version",
+          "context_id",
+          "policy_id",
+          "status",
+          "scope",
+          "warnings",
+          "provenance",
+          "detail_mode",
+          "profiles"
+        ],
+        "additionalProperties": false
+      },
+      "CityDetail": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/DailyDetail"
+          },
+          {
+            "$ref": "#/components/schemas/ProfileDetail"
+          }
+        ]
+      },
+      "Coordinate": {
+        "type": "object",
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "crs": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "longitude",
+          "latitude",
+          "crs"
+        ],
+        "additionalProperties": false
+      },
+      "StationMetadata": {
+        "type": "object",
+        "properties": {
+          "station_id": {
+            "type": "string",
+            "pattern": "^\\d{4}[A-Z]$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "map_coordinate": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Coordinate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "coordinate_status": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "missing",
+              "unverified"
+            ]
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "station_id",
+          "name",
+          "map_coordinate",
+          "coordinate_status",
+          "reason_codes"
+        ],
+        "additionalProperties": false
+      },
+      "CompareRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "base_year": {
+            "type": "integer",
+            "minimum": 2021,
+            "maximum": 2025
+          },
+          "target_year": {
+            "type": "integer",
+            "minimum": 2021,
+            "maximum": 2025
+          },
+          "statistic": {
+            "type": "string",
+            "enum": [
+              "mean",
+              "p90"
+            ]
+          }
+        },
+        "required": [
+          "dataset_version",
+          "policy_id",
+          "base_year",
+          "target_year",
+          "statistic"
+        ],
+        "additionalProperties": false
+      },
+      "ComparisonRow": {
+        "type": "object",
+        "properties": {
+          "station": {
+            "$ref": "#/components/schemas/StationMetadata"
+          },
+          "base": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "target": {
+            "$ref": "#/components/schemas/Statistic"
+          },
+          "eligible": {
+            "type": "boolean"
+          },
+          "exclusion_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "absolute_change": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "relative_change_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "change_reason_codes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "station",
+          "base",
+          "target",
+          "eligible",
+          "exclusion_reasons",
+          "absolute_change",
+          "relative_change_pct",
+          "change_reason_codes"
+        ],
+        "additionalProperties": false
+      },
+      "ComparisonCounts": {
+        "type": "object",
+        "properties": {
+          "catalog_total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "with_coordinates": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "paired": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "excluded": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "catalog_total",
+          "with_coordinates",
+          "paired",
+          "excluded"
+        ],
+        "additionalProperties": false
+      },
+      "StationComparison": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "const": "0.1.0"
+          },
+          "dataset_version": {
+            "type": "string"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "empty"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Scope"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "manifest_id": {
+                "type": "string"
+              },
+              "rule_version": {
+                "type": "string"
+              },
+              "pipeline_version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "manifest_id",
+              "rule_version",
+              "pipeline_version"
+            ],
+            "additionalProperties": false
+          },
+          "base_year": {
+            "type": "integer",
+            "minimum": 2021,
+            "maximum": 2025
+          },
+          "target_year": {
+            "type": "integer",
+            "minimum": 2021,
+            "maximum": 2025
+          },
+          "statistic": {
+            "type": "string",
+            "enum": [
+              "mean",
+              "p90"
+            ]
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComparisonRow"
+            }
+          },
+          "counts": {
+            "$ref": "#/components/schemas/ComparisonCounts"
+          },
+          "color_scale": {
+            "$ref": "#/components/schemas/Scale"
+          }
+        },
+        "required": [
+          "contract_version",
+          "dataset_version",
+          "context_id",
+          "policy_id",
+          "status",
+          "scope",
+          "warnings",
+          "provenance",
+          "base_year",
+          "target_year",
+          "statistic",
+          "rows",
+          "counts",
+          "color_scale"
+        ],
+        "additionalProperties": false
+      },
+      "TrendsRequest": {
+        "type": "object",
+        "properties": {
+          "dataset_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "station_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^\\d{4}[A-Z]$"
+            },
+            "minItems": 1,
+            "maxItems": 3,
+            "uniqueItems": true
+          },
+          "statistic": {
+            "type": "string",
+            "enum": [
+              "mean",
+              "p90"
+            ]
+          }
+        },
+        "required": [
+          "dataset_version",
+          "policy_id",
+          "station_ids",
+          "statistic"
+        ],
+        "additionalProperties": false
+      },
+      "StationSeries": {
+        "type": "object",
+        "properties": {
+          "station_id": {
+            "type": "string",
+            "pattern": "^\\d{4}[A-Z]$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "yearly": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "year": {
+                  "type": "integer",
+                  "minimum": 2021,
+                  "maximum": 2025
+                },
+                "statistic": {
+                  "$ref": "#/components/schemas/Statistic"
+                }
+              },
+              "required": [
+                "year",
+                "statistic"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 5,
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "station_id",
+          "name",
+          "yearly"
+        ],
+        "additionalProperties": false
+      },
+      "StationTrends": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "const": "0.1.0"
+          },
+          "dataset_version": {
+            "type": "string"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "empty"
+            ]
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Scope"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Warning"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "manifest_id": {
+                "type": "string"
+              },
+              "rule_version": {
+                "type": "string"
+              },
+              "pipeline_version": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "manifest_id",
+              "rule_version",
+              "pipeline_version"
+            ],
+            "additionalProperties": false
+          },
+          "statistic": {
+            "type": "string",
+            "enum": [
+              "mean",
+              "p90"
+            ]
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StationSeries"
+            },
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "contract_version",
+          "dataset_version",
+          "context_id",
+          "policy_id",
+          "status",
+          "scope",
+          "warnings",
+          "provenance",
+          "statistic",
+          "series"
+        ],
+        "additionalProperties": false
+      },
+      "Policy": {
+        "type": "object",
+        "properties": {
+          "policy_id": {
+            "type": "string",
+            "enum": [
+              "study-75",
+              "study-90",
+              "observed-only"
+            ]
+          },
+          "min_valid_hours": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 24
+          },
+          "monthly_min_coverage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "annual_min_coverage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "require_all_months": {
+            "type": "boolean"
+          },
+          "quantile_method": {
+            "const": "linear"
+          }
+        },
+        "required": [
+          "policy_id",
+          "min_valid_hours",
+          "monthly_min_coverage",
+          "annual_min_coverage",
+          "require_all_months",
+          "quantile_method"
+        ],
+        "additionalProperties": false
+      },
+      "GeometryMetadata": {
+        "type": "object",
+        "properties": {
+          "asset_path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "crs": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "coordinate_note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "asset_path",
+          "sha256",
+          "crs",
+          "source_url",
+          "coordinate_note"
+        ],
+        "additionalProperties": false
+      },
+      "Metadata": {
+        "type": "object",
+        "properties": {
+          "contract_version": {
+            "const": "0.1.0"
+          },
+          "dataset_version": {
+            "type": "string"
+          },
+          "city_range": {
+            "$ref": "#/components/schemas/DateRange"
+          },
+          "station_range": {
+            "$ref": "#/components/schemas/DateRange"
+          },
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Policy"
+            },
+            "minItems": 1,
+            "maxItems": 2
+          },
+          "stations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StationMetadata"
+            }
+          },
+          "geometry": {
+            "$ref": "#/components/schemas/GeometryMetadata"
+          },
+          "unit": {
+            "const": "μg/m³"
+          },
+          "timezone": {
+            "const": "Asia/Shanghai"
+          }
+        },
+        "required": [
+          "contract_version",
+          "dataset_version",
+          "city_range",
+          "station_range",
+          "policies",
+          "stations",
+          "geometry",
+          "unit",
+          "timezone"
+        ],
+        "additionalProperties": false
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "INVALID_QUERY",
+                  "DATA_VERSION_CHANGED",
+                  "CONTEXT_MISMATCH",
+                  "DATASET_NOT_READY",
+                  "INTERNAL_ERROR"
+                ]
+              },
+              "message": {
+                "type": "string"
+              },
+              "request_id": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "field",
+                    "reason"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "request_id",
+              "fields"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "additionalProperties": false
+      },
+      "CityAnalysisExportRequest": {
+        "type": "object",
+        "properties": {
+          "result_kind": {
+            "const": "city_analysis"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "query": {
+            "$ref": "#/components/schemas/CityRequest"
+          }
+        },
+        "required": [
+          "result_kind",
+          "context_id",
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "CityDetailExportRequest": {
+        "type": "object",
+        "properties": {
+          "result_kind": {
+            "const": "city_detail"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "query": {
+            "$ref": "#/components/schemas/CityDetailRequest"
+          }
+        },
+        "required": [
+          "result_kind",
+          "context_id",
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "StationComparisonExportRequest": {
+        "type": "object",
+        "properties": {
+          "result_kind": {
+            "const": "station_comparison"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "query": {
+            "$ref": "#/components/schemas/CompareRequest"
+          }
+        },
+        "required": [
+          "result_kind",
+          "context_id",
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "StationTrendsExportRequest": {
+        "type": "object",
+        "properties": {
+          "result_kind": {
+            "const": "station_trends"
+          },
+          "context_id": {
+            "type": "string"
+          },
+          "query": {
+            "$ref": "#/components/schemas/TrendsRequest"
+          }
+        },
+        "required": [
+          "result_kind",
+          "context_id",
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "ExportRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CityAnalysisExportRequest"
+          },
+          {
+            "$ref": "#/components/schemas/CityDetailExportRequest"
+          },
+          {
+            "$ref": "#/components/schemas/StationComparisonExportRequest"
+          },
+          {
+            "$ref": "#/components/schemas/StationTrendsExportRequest"
+          }
+        ]
+      }
+    }
+  }
+}
