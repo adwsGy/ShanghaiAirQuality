@@ -19,6 +19,13 @@
 .\.venv\Scripts\python.exe -m pipeline.rebuild --output data/rebuilt
 ```
 
+Linux/macOS使用以下命令，Git Bash也可沿用Windows虚拟环境的Python路径：
+
+```bash
+./.venv/bin/python -m pipeline.verify
+./.venv/bin/python -m pipeline.rebuild --output data/rebuilt
+```
+
 校验逐一核对清单所列文件的长度与SHA-256。重建从已提供的标准小时分区重算日均、月度、年度和站点对比，沿用日表的观测日历及来源字段，生成新的版本与清单，不下载数据、不请求模型。目标必须为不同的空目录；再次重建请指定新的输出目录。若要运行重建结果，可设置环境变量`SHANGHAI_DATA_DIR`为该目录。
 
 ## 清洗其他原始文件
@@ -26,6 +33,8 @@
 ```powershell
 .\.venv\Scripts\python.exe -m pipeline.clean data/raw/china_cities_20230101.csv --source city --objects 上海=shanghai --output data/imported/city.csv.gz
 ```
+
+Linux/macOS将解释器替换为`./.venv/bin/python`，其余参数相同。
 
 输入可为单日CSV或包含多个单日CSV的ZIP，文件名须以八位日期加`.csv`结尾。站点使用`--source site --objects 1141A=1141A 1142A=1142A`。只提取`PM2.5`一小时记录，忽略`PM2.5_24h`；相同重复值合并，冲突重复值隔离，非法日期、小时、数值及HTML响应记录在审计文件中。输出为标准小时表和对应的`.audit.json`，不会覆盖原文件。
 

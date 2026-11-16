@@ -4,31 +4,21 @@
 
 ## 启动
 
-需要Python 3.12和Node.js 24。首次安装依赖并构建前端：
+需要Python 3.12和Node.js 24。在项目根目录使用对应系统的脚本：Windows使用PowerShell，Linux/macOS使用Bash；Git Bash也可使用`.sh`入口。脚本会自动定位项目目录，无需激活虚拟环境。
 
-```powershell
-.\scripts\setup.ps1
-```
+| 操作 | Windows / PowerShell | Linux、macOS / Bash |
+| --- | --- | --- |
+| 首次安装与构建 | `.\scripts\setup.ps1` | `./scripts/setup.sh` |
+| 启动后端 | `.\scripts\start-backend.ps1` | `./scripts/start-backend.sh` |
+| 启动前端 | `.\scripts\start-frontend.ps1` | `./scripts/start-frontend.sh` |
+| 使用后端统一提供构建后的页面 | `.\scripts\start.ps1` | `./scripts/start.sh` |
+| 数据、测试与构建检查 | `.\scripts\check.ps1` | `./scripts/check.sh` |
 
-开发时打开两个终端，在项目根目录分别运行：
+首次运行安装脚本，然后打开两个终端，分别启动后端与前端，访问 **http://127.0.0.1:5173/**。前端通过Vite将`/api`转发到后端`http://127.0.0.1:8000`。也可以只运行`start`脚本，访问 **http://127.0.0.1:8000/**。运行不需要重新下载或处理数据。
 
-```powershell
-.\scripts\start-backend.ps1
-```
+安装时指定Python解释器，PowerShell使用`-Python python3.12`，Bash使用`--python python3.12`；解释器路径包含空格时加引号。Bash脚本识别`.venv/bin/python`，也识别Git Bash下的`.venv/Scripts/python.exe`。
 
-```powershell
-.\scripts\start-frontend.ps1
-```
-
-浏览器访问 **http://127.0.0.1:5173/**。前端通过Vite将`/api`转发到本项目后端`http://127.0.0.1:8000`。需要修改端口时，后端使用`-Port 8035`，前端使用`-Port 5175 -ApiPort 8035`。
-
-也可以使用构建后的前端，由后端统一提供页面与接口：
-
-```powershell
-.\scripts\start.ps1
-```
-
-此时打开 **http://127.0.0.1:8000/**。运行不需要重新下载或处理数据。
+修改端口时，PowerShell后端使用`-Port 8035`，前端使用`-Port 5175 -ApiPort 8035`；Bash对应使用`--port 8035`和`--port 5175 --api-port 8035`。后端热重载选项分别为`-Reload`和`--reload`，各Bash脚本均支持`--help`。
 
 ## 功能
 
@@ -47,13 +37,18 @@
 .\.venv\Scripts\python.exe -m pipeline.rebuild --output data/rebuilt
 ```
 
+Linux/macOS：
+
+```bash
+./.venv/bin/python -m pipeline.verify
+./.venv/bin/python -m pipeline.rebuild --output data/rebuilt
+```
+
 第二条命令从仓库内的清洗后小时记录重算日均和汇总，默认不覆盖正在使用的数据。原始全国CSV或ZIP的清洗入口为`python -m pipeline.clean --help`。原始大文件不随仓库提供，日常运行和重算已有统计均不需要它们。
 
 ## 验证
 
-```powershell
-.\scripts\check.ps1
-```
+Windows运行`.\scripts\check.ps1`，Linux/macOS或Git Bash运行`./scripts/check.sh`。
 
 检查数据校验值、后端测试、前端测试和生产构建。AI测试使用离线模拟服务，不消耗模型调用。
 
@@ -62,6 +57,8 @@
 ```powershell
 .\.venv\Scripts\python.exe scripts/smoke.py
 ```
+
+Linux/macOS使用`./.venv/bin/python scripts/smoke.py`。
 
 验证范围及数据版本见[运行验证](docs/verification.md)。
 
