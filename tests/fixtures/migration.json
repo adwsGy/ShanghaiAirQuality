@@ -1,0 +1,467 @@
+{
+  "source_commit": "d493acf",
+  "dataset_version": "sh-pm25-1318ae447557e3f0",
+  "method": "SHA-256 of complete canonical JSON business responses from the source application",
+  "records": [
+    {
+      "label": "metadata",
+      "endpoint": "metadata",
+      "query": null,
+      "response_sha256": "309bbc8157cd5d56fca0c640237eec72d01a8b51c237919e4966c101140d9cb7"
+    },
+    {
+      "label": "annual trend",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "trend",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2015-01-01",
+          "end": "2025-12-31",
+          "statistic": "mean",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "68a4100713329528511fe4b7089b3621d94082e867a9619c9a1f27d30f127d9d"
+    },
+    {
+      "label": "monthly trend",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "trend",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2022-01-01",
+          "end": "2023-12-31",
+          "statistic": "mean",
+          "granularity": "month",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "47a460bc65020d90fbcb97eba8e20cb31b34914e23f39de9e5b9d1ce1b6ab1f7"
+    },
+    {
+      "label": "monthly mean comparison",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "compare",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2015-01-01",
+          "end": "2025-12-31",
+          "statistic": "mean",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "a0ce39b9344ec5dd57debc4f76977e60105c583a9ffbdaccf3a8d6f752a4c9c6"
+    },
+    {
+      "label": "monthly p90 comparison",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "compare",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2015-01-01",
+          "end": "2025-12-31",
+          "statistic": "p90",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "380fe9dbf62cb56a3cb57b04a835792dde0a9dd393795073255de301717e1720"
+    },
+    {
+      "label": "monthly matrix",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "season",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2015-01-01",
+          "end": "2025-12-31",
+          "statistic": "mean",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "5ccd7099dbcec8fa2dc94b5da38530f85760235baaa5a71eeb383d303317a812"
+    },
+    {
+      "label": "daily distribution",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "distribution",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2015-01-01",
+          "end": "2025-12-31",
+          "statistic": "mean",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "c863a787bcc880cbf4249f69ddab0a473e8165c436a40d985bad0209471986f4"
+    },
+    {
+      "label": "continuous high episodes",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "episodes",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2023-12-01",
+          "end": "2023-12-31",
+          "statistic": "mean",
+          "granularity": "day",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "073f706931cb33c4f0c3f0fb29e522200781af45473a8f1ab8074bc9caf11ae4"
+    },
+    {
+      "label": "station annual comparison",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "stations",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2015-01-01",
+          "end": "2025-12-31",
+          "statistic": "mean",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "749b5e5c798cacb73ced1de344dcc8aff0e944c9ecac7d475c6360c9e7411793"
+    },
+    {
+      "label": "historical station period",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "stations",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2018-08-01",
+          "end": "2018-08-31",
+          "statistic": "mean",
+          "granularity": "year",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [],
+          "direction": "all",
+          "station_mode": "period",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "af3fcf8e74b3f832589bc25a41825f1637bd66bb72380e25cc0b228a64432f42"
+    },
+    {
+      "label": "station daily tracking",
+      "endpoint": "workspace/query",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "task": "station_trends",
+        "context": {
+          "object_id": "shanghai",
+          "start": "2023-11-01",
+          "end": "2023-11-30",
+          "statistic": "mean",
+          "granularity": "day",
+          "base_year": 2022,
+          "target_year": 2023,
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "station_ids": [],
+          "selected_station_ids": [
+            "1141A",
+            "1143A",
+            "1144A"
+          ],
+          "direction": "all",
+          "station_mode": "compare",
+          "threshold": 75,
+          "episode_min_days": 2,
+          "station_sort": "delta_asc",
+          "season_definition": null
+        }
+      },
+      "response_sha256": "5b2e76984e313b58d83b68d66b1afbf5bfd626ac712c5fab20610046f3cc4681"
+    },
+    {
+      "label": "shanghai hourly 2018-08",
+      "endpoint": "observations/month",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "station_id": "shanghai",
+        "month": "2018-08"
+      },
+      "response_sha256": "0d0924da343ebb4229c44585a7448188364cd29faeaf535e3a0a07526f0d0719"
+    },
+    {
+      "label": "shanghai hourly 2018-12",
+      "endpoint": "observations/month",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "station_id": "shanghai",
+        "month": "2018-12"
+      },
+      "response_sha256": "e966001f5d098596122b219cff3deafd70cccdaa6d5addbdb63d0e573bbeaa64"
+    },
+    {
+      "label": "1141A hourly 2018-08",
+      "endpoint": "observations/month",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "station_id": "1141A",
+        "month": "2018-08"
+      },
+      "response_sha256": "4c684faa771909d88f949720fe3d12c396e8a21463b594d9b1c2afbd4b0b38eb"
+    },
+    {
+      "label": "1144A hourly 2023-11",
+      "endpoint": "observations/month",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "station_id": "1144A",
+        "month": "2023-11"
+      },
+      "response_sha256": "baa35213f4b899679de329cfa3166b21fcf67c6bddf6ff904df0f2027c2c4783"
+    },
+    {
+      "label": "shanghai hourly 2024-02",
+      "endpoint": "observations/month",
+      "query": {
+        "dataset_version": "sh-pm25-1318ae447557e3f0",
+        "station_id": "shanghai",
+        "month": "2024-02"
+      },
+      "response_sha256": "28a1e562a02a3e52c6b558df3bfcd6128cce17995a39f658b56f8f0680d630ef"
+    }
+  ]
+}
