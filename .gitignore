@@ -1,0 +1,16 @@
+.venv/
+.env
+.env.local
+**/__pycache__/
+*.pyc
+**/node_modules/
+frontend/dist/
+data/runtime/
+data/raw/
+data/imported/
+data/rebuilt/
+data/staging/
+tmp/
+*.log
+.DS_Store
+

@@ -1,0 +1,9 @@
+pandas==3.0.1
+numpy==2.3.5
+jsonschema==4.25.1
+fastapi==0.163.0
+uvicorn==0.54.0
+httpx==0.28.1
+langgraph==1.2.22
+langgraph-checkpoint-sqlite==3.1.3
+
