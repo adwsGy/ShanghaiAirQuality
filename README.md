@@ -2,6 +2,22 @@
 
 上海PM2.5交互分析应用。React、TypeScript与ECharts组成前端，FastAPI提供统计接口，LangGraph协调AI工具调用与有来源的分析回答。
 
+## 界面预览
+
+**长期变化**：同时查看年度均值与P90，通过图表选择和月份入口进入日均、小时明细。
+
+[![上海PM2.5年度均值与P90趋势](docs/images/annual-trend.png)](docs/images/annual-trend.png)
+
+| 时段比较 | 年月浓度矩阵 |
+| --- | --- |
+| [![2023年与2022年同历月浓度及差值比较](docs/images/period-comparison.png)](docs/images/period-comparison.png) | [![年月浓度矩阵与月份悬停提示](docs/images/monthly-matrix.png)](docs/images/monthly-matrix.png) |
+| 对照两年的月均浓度与各月增减。 | 按统一色阶比较年份和月份，点选查看明细。 |
+| **站点分析** | **AI分析助手** |
+| [![上海监测站地图与两期站点浓度比较](docs/images/station-analysis.png)](docs/images/station-analysis.png) | [![AI助手结合观测数据和联网资料解释2023年11月浓度变化](docs/images/ai-assistant.png)](docs/images/ai-assistant.png) |
+| 地图选站，比较站点两期浓度并追踪变化。 | 自然语言提问，结合本地查询与联网资料回答，并附事实和来源引用。 |
+
+点击截图可查看原图。
+
 ## 启动
 
 需要Python 3.12和Node.js 24。在项目根目录使用对应系统的脚本：Windows使用PowerShell，Linux/macOS使用Bash；Git Bash也可使用`.sh`入口。脚本会自动定位项目目录，无需激活虚拟环境。
@@ -75,6 +91,4 @@ scripts/           安装、启动和检查
 tests/             后端与数据处理测试
 docs/              运行数据说明
 ```
-
-![运行界面](docs/images/workbench.jpg)
 
