@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse,Response,FileResponse
 from fastapi.staticfiles import StaticFiles
 from api.service import Dataset,QueryError,ROOT
 
-def create_app(data_directory=None):
+def create_app(data_directory=None,agent_service=None,agent_directory=None):
     owned_agents=[]
 
     @asynccontextmanager
@@ -35,6 +35,17 @@ def create_app(data_directory=None):
         except (OSError,ValueError,KeyError) as error:
             logging.getLogger(__name__).warning('Dataset not ready: %s',error)
             raise QueryError(503,'DATASET_NOT_READY','研究数据尚未就绪，请先完成数据构建与校验。') from error
+
+    @lru_cache(maxsize=1)
+    def agent():
+        if agent_service is not None:return agent_service
+        from api.agent.service import AgentService
+        owned=AgentService(dataset,directory=agent_directory)
+        owned_agents.append(owned)
+        return owned
+
+    from api.agent.router import add_routes
+    add_routes(app,agent)
 
     def error_response(request,status,code,message,fields=None):
         request_id=getattr(request.state,'request_id',uuid.uuid4().hex[:12])
