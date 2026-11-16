@@ -2,7 +2,7 @@
 set -euo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/_common.sh"
 
-bootstrap_python="${PYTHON:-python3}"
+bootstrap_python="${PYTHON:-}"
 while (($#)); do
     case "$1" in
         --python)
@@ -15,12 +15,33 @@ while (($#)); do
     esac
 done
 
-require_command npm
 cd -- "$app_root"
 find_python
 if [[ -z "$app_python" ]]; then
-    require_command "$bootstrap_python"
-    "$bootstrap_python" -m venv .venv
+    bootstrap=()
+    if [[ -n "$bootstrap_python" ]]; then
+        require_command "$bootstrap_python"
+        bootstrap=("$bootstrap_python")
+    else
+        for candidate in python3.12 python3 python; do
+            candidate_path="$(command -v "$candidate" || true)"
+            [[ -n "$candidate_path" ]] || continue
+            # Windows Store aliases are launchers, not installed interpreters.
+            [[ "$candidate_path" != */Microsoft/WindowsApps/* ]] || continue
+            if "$candidate_path" -c 'import sys; sys.exit(sys.version_info[:2] != (3, 12))' >/dev/null 2>&1; then
+                bootstrap=("$candidate_path"); break
+            fi
+        done
+        if ((${#bootstrap[@]} == 0)) && command -v py >/dev/null 2>&1 \
+            && py -3.12 -c 'import sys; sys.exit(sys.version_info[:2] != (3, 12))' >/dev/null 2>&1; then
+            bootstrap=(py -3.12)
+        fi
+        ((${#bootstrap[@]})) || die 'Python 3.12 was not found. Install it, or pass --python with its interpreter path.'
+    fi
+    "${bootstrap[@]}" scripts/check_runtime.py
+    "${bootstrap[@]}" -m venv .venv
+else
+    "$app_python" scripts/check_runtime.py
 fi
 require_python
 "$app_python" -m pip install --disable-pip-version-check -r requirements-lock.txt

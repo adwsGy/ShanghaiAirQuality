@@ -10,8 +10,8 @@ if (($#)); then
 fi
 
 require_python
-require_command npm
 cd -- "$app_root"
+"$app_python" scripts/check_runtime.py
 "$app_python" -m pipeline.verify
 (
     cd -- "$app_root/frontend"
