@@ -20,7 +20,7 @@
 
 ## 启动
 
-需要Python 3.12和Node.js 24。在项目根目录使用对应系统的脚本：Windows使用PowerShell，Linux/macOS使用Bash；Git Bash也可使用`.sh`入口。脚本会自动定位项目目录，无需激活虚拟环境。
+需要 Python 3.12 和 Node.js 24。在项目根目录使用对应系统的脚本：Windows 使用 PowerShell，Linux/macOS 使用 Bash；Git Bash 也可使用 `.sh` 入口。脚本会自动定位项目目录，无需激活虚拟环境。
 
 | 操作 | Windows / PowerShell | Linux、macOS / Bash |
 | --- | --- | --- |
@@ -30,11 +30,13 @@
 | 使用后端统一提供构建后的页面 | `.\scripts\start.ps1` | `./scripts/start.sh` |
 | 数据、测试与构建检查 | `.\scripts\check.ps1` | `./scripts/check.sh` |
 
-首次运行安装脚本，然后打开两个终端，分别启动后端与前端，访问 **http://127.0.0.1:5173/**。前端通过Vite将`/api`转发到后端`http://127.0.0.1:8000`。也可以只运行`start`脚本，访问 **http://127.0.0.1:8000/**。运行不需要重新下载或处理数据。
+首次运行安装脚本，然后打开两个终端，分别启动后端与前端。浏览器访问 [http://127.0.0.1:5173/](http://127.0.0.1:5173/)，前端通过 Vite 将 `/api` 请求转发到后端。
 
-安装时指定Python解释器，PowerShell使用`-Python python3.12`，Bash使用`--python python3.12`；解释器路径包含空格时加引号。Bash脚本识别`.venv/bin/python`，也识别Git Bash下的`.venv/Scripts/python.exe`。
+也可以只运行 `start` 脚本，由后端统一提供页面和接口，浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)。运行不需要重新下载或处理数据。
 
-修改端口时，PowerShell后端使用`-Port 8035`，前端使用`-Port 5175 -ApiPort 8035`；Bash对应使用`--port 8035`和`--port 5175 --api-port 8035`。后端热重载选项分别为`-Reload`和`--reload`，各Bash脚本均支持`--help`。
+安装时指定 Python 解释器，PowerShell 使用 `-Python python3.12`，Bash 使用 `--python python3.12`；解释器路径包含空格时加引号。Bash 脚本识别 `.venv/bin/python`，也识别 Git Bash 下的 `.venv/Scripts/python.exe`。
+
+修改端口时，PowerShell 后端使用 `-Port 8035`，前端使用 `-Port 5175 -ApiPort 8035`；Bash 对应使用 `--port 8035` 和 `--port 5175 --api-port 8035`。后端热重载选项分别为 `-Reload` 和 `--reload`，各 Bash 脚本均支持 `--help`。
 
 ## 功能
 
@@ -42,11 +44,11 @@
 
 分析助手能够解释统计概念、组合本地查询、回答变化问题，并引用可返回原记录的事实。联网解释使用当前实现支持的DeepSeek Search；其他OpenAI兼容服务仍可用于本地数据分析。真实调用需要服务商密钥，手动浏览图表和运行测试不调用模型。
 
-把`.env.example`复制为`.env.local`，填写`AIR_AI_BASE_URL`、`AIR_AI_MODEL`、`AIR_AI_API_KEY`。密钥只由后端读取，本地配置与会话数据库不进入Git。环境变量可覆盖配置文件。前端不保存或接收服务密钥。
+把 `.env.example` 复制为 `.env.local`，填写 `AIR_AI_BASE_URL`、`AIR_AI_MODEL`、`AIR_AI_API_KEY`。密钥只由后端读取，本地配置与会话数据库不进入 Git。环境变量可覆盖配置文件。前端不保存或接收服务密钥。
 
 ## 数据与处理
 
-`data/processed/`已随仓库提供可直接使用的清洗后数据，约17MB，包含城市和站点日均、分区小时记录、站点目录、地图及来源校验清单。城市记录覆盖2015—2025年，站点包含2021—2025年及2018年八月、十二月历史记录。[数据说明](docs/data.md)列出来源、统计口径和重建方式。
+`data/processed/` 已随仓库提供可直接使用的清洗后数据，约17MB，包含城市和站点日均、分区小时记录、站点目录、地图及来源校验清单。城市记录覆盖2015—2025年，站点包含2021—2025年及2018年八月、十二月历史记录。[数据说明](docs/data.md)列出来源、统计口径和重建方式。
 
 ```powershell
 .\.venv\Scripts\python.exe -m pipeline.verify
@@ -60,11 +62,11 @@ Linux/macOS：
 ./.venv/bin/python -m pipeline.rebuild --output data/rebuilt
 ```
 
-第二条命令从仓库内的清洗后小时记录重算日均和汇总，默认不覆盖正在使用的数据。原始全国CSV或ZIP的清洗入口为`python -m pipeline.clean --help`。原始大文件不随仓库提供，日常运行和重算已有统计均不需要它们。
+第二条命令从仓库内的清洗后小时记录重算日均和汇总，默认不覆盖正在使用的数据。原始全国 CSV 或 ZIP 的清洗入口为 `python -m pipeline.clean --help`。原始大文件不随仓库提供，日常运行和重算已有统计均不需要它们。
 
 ## 验证
 
-Windows运行`.\scripts\check.ps1`，Linux/macOS或Git Bash运行`./scripts/check.sh`。
+Windows 运行 `.\scripts\check.ps1`，Linux/macOS 或 Git Bash 运行 `./scripts/check.sh`。
 
 检查数据校验值、后端测试、前端测试和生产构建。AI测试使用离线模拟服务，不消耗模型调用。
 
@@ -74,7 +76,7 @@ Windows运行`.\scripts\check.ps1`，Linux/macOS或Git Bash运行`./scripts/chec
 .\.venv\Scripts\python.exe scripts/smoke.py
 ```
 
-Linux/macOS使用`./.venv/bin/python scripts/smoke.py`。
+Linux/macOS 使用 `./.venv/bin/python scripts/smoke.py`。
 
 验证范围及数据版本见[运行验证](docs/verification.md)。
 
