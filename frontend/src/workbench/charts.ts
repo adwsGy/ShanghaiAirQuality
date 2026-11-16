@@ -1,6 +1,7 @@
 import type { EChartsOption } from 'echarts';
 import type { Context, Result, SiteRow } from './model.ts';
 import { signed, stationStyle, value } from './model.ts';
+import { seasonColors, seasonLabelColor, seasonMaximum, seasonMissingColor } from './seasonScale.ts';
 export const palette = { mean: '#086c74', p90: '#6652a3', base: '#687985', target: '#086c74', up: '#a64f21', down: '#266aa3', text: '#33434b', grid: '#e5e9eb', selection: '#172d36' };
 const font = '"Microsoft YaHei", "PingFang SC", sans-serif';
 const axis = { axisLabel: { color: palette.text, fontSize: 12 }, axisLine: { lineStyle: { color: '#b7c4ca' } }, axisTick: { show: false } };
@@ -31,13 +32,13 @@ export function compareOption(result: Result, difference = false, selected: stri
 export function seasonOption(result: Result, selected: string | null, numbers: boolean, compact = false): EChartsOption {
   const cells = result.data.cells ?? [], years = [...new Set(cells.map(p => p.year))];
   const monthOrder = result.data.month_order ?? result.context.months;
-  // Fixed metric scales make colors comparable across object and range changes.
-  const max = result.context.statistic === 'mean' ? 150 : 250;
-  return { ...base, grid: { left: 56, right: 24, top: 12, bottom: 68 }, tooltip: { ...tooltip, trigger: 'item', formatter: (p: any) => { const cell = cells[p.dataIndex]; return cell ? `${cell.period}<br/>${result.context.statistic === 'mean' ? '均值' : 'P90'}：${value(cell[result.context.statistic])} μg/m³<br/>${cell.n} 天观测` : ''; } },
+  const max = seasonMaximum[result.context.statistic];
+  // A render-only sentinel draws missing cells; tooltips and exports retain the original null observations.
+  return { ...base, grid: { left: 56, right: 24, top: 12, bottom: 38 }, tooltip: { ...tooltip, trigger: 'item', formatter: (p: any) => { const cell = cells[p.dataIndex]; return cell ? `${cell.period}<br/>${result.context.statistic === 'mean' ? '均值' : 'P90'}：${value(cell[result.context.statistic])} μg/m³<br/>${cell.n} 天观测` : ''; } },
     xAxis: { ...axis, type: 'category', data: monthOrder.map(m => result.context.season_definition === 'cross_year_winter' && m === 12 ? '上年12月' : compact ? String(m) : `${m}月`), splitArea: { show: false } },
     yAxis: { ...axis, type: 'category', inverse: true, data: years.map(String), splitArea: { show: false } },
-    visualMap: { min: 0, max, calculable: false, orient: 'horizontal', left: 'center', bottom: 0, itemWidth: 12, itemHeight: 140, text: [`${max} μg/m³`, '0'], inRange: { color: ['#edf6f5', '#bfddda', '#81bbb8', '#388c91', '#13545f'] }, outOfRange: { color: '#d8dddf' } },
-    series: [{ type: 'heatmap', data: cells.map(cell => ({ name: cell.period, value: [monthOrder.indexOf(cell.month), years.indexOf(cell.year), cell[result.context.statistic]], itemStyle: { borderColor: selected === cell.period ? palette.selection : '#fff', borderWidth: selected === cell.period ? 3 : 2, color: cell.n === 0 ? '#d8dddf' : undefined }, label: { color: (cell[result.context.statistic] ?? 0) > max * .6 ? '#fff' : '#17343b' } })), label: { show: numbers, fontSize: 12, color: '#17343b', formatter: (p: any) => p.value[2] == null ? '—' : compact ? String(Math.round(p.value[2])) : value(p.value[2]) }, emphasis: { itemStyle: { borderColor: palette.selection, borderWidth: 3 } } }] };
+    visualMap: { show: false, min: 0, max, dimension: 2, seriesIndex: 0, inRange: { color: seasonColors }, outOfRange: { color: seasonColors.at(-1) } },
+    series: [{ type: 'heatmap', data: cells.map(cell => ({ name: cell.period, missing: cell.n === 0, value: [monthOrder.indexOf(cell.month), years.indexOf(cell.year), cell.n === 0 ? -1 : cell[result.context.statistic]], itemStyle: { borderColor: selected === cell.period ? palette.selection : '#fff', borderWidth: selected === cell.period ? 3 : 2, color: cell.n === 0 ? seasonMissingColor : undefined }, label: { color: cell.n === 0 ? '#000000' : seasonLabelColor(cell[result.context.statistic], max) } })), label: { show: numbers, fontSize: 12, color: '#000000', formatter: (p: any) => p.data.missing || p.value[2] == null ? '—' : compact ? String(Math.round(p.value[2])) : value(p.value[2]) }, emphasis: { itemStyle: { borderColor: palette.selection, borderWidth: 3 } } }] };
 }
 export function stationOption(result: Result): EChartsOption {
   if (result.context.station_mode === 'period') {

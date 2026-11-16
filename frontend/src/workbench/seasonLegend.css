@@ -1,0 +1,9 @@
+.wb-season-legend { width: min(280px, calc(100% - 32px)); margin: -8px auto 14px; color: #33434b; }
+.wb-season-legend-title { margin-bottom: 7px; text-align: center; font-size: 12px; line-height: 1.5; }
+.wb-season-gradient { height: 12px; border: 1px solid #b7c4ca; border-radius: 2px; }
+.wb-season-ticks { display: flex; justify-content: space-between; margin-top: 4px; font-size: 12px; font-variant-numeric: tabular-nums; }
+.wb-season-ticks span { position: relative; min-width: 1px; text-align: center; }
+.wb-season-ticks span::before { content: ''; position: absolute; width: 1px; height: 4px; background: #8096a4; top: -5px; left: 50%; }
+.wb-season-ticks span:first-child::before { left: 0; }
+.wb-season-ticks span:last-child::before { left: auto; right: 0; }
+.wb-season-legend p { margin: 7px 0 0; font-size: 12px; line-height: 1.6; text-align: center; }
