@@ -2,7 +2,7 @@
 
 上海PM2.5交互分析应用。React、TypeScript与ECharts组成前端，FastAPI提供统计接口，LangGraph协调AI工具调用与有来源的分析回答。
 
-项目原创代码采用[MIT许可证](LICENSE)。第三方数据与地图的授权范围见[DATA_LICENSE.md](DATA_LICENSE.md)，依赖许可见[第三方说明](THIRD_PARTY_NOTICES.md)。
+项目代码采用[MIT许可证](LICENSE)。第三方数据与地图的授权范围见[DATA_LICENSE.md](DATA_LICENSE.md)，依赖许可见[第三方说明](THIRD_PARTY_NOTICES.md)。
 
 ## 界面预览
 
@@ -20,7 +20,14 @@
 
 ## 启动
 
-需要 Python 3.12 和 Node.js 24。在项目根目录使用对应系统的脚本：Windows 使用 PowerShell，Linux/macOS 使用 Bash；Git Bash 也可使用 `.sh` 入口。脚本会自动定位项目目录，无需激活虚拟环境。
+需要 Python 3.12 和 Node.js 24 或更新版本。先克隆仓库并进入项目目录：
+
+```bash
+git clone https://github.com/adwsGy/ShanghaiAirQuality.git
+cd ShanghaiAirQuality
+```
+
+Windows 使用 PowerShell，Linux/macOS 使用 Bash；Git Bash 也可使用 `.sh` 入口。脚本会自动定位项目目录，无需激活虚拟环境。
 
 | 操作 | Windows / PowerShell | Linux、macOS / Bash |
 | --- | --- | --- |
@@ -34,7 +41,9 @@
 
 也可以只运行 `start` 脚本，由后端统一提供页面和接口，浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)。运行不需要重新下载或处理数据。
 
-安装时指定 Python 解释器，PowerShell 使用 `-Python python3.12`，Bash 使用 `--python python3.12`；解释器路径包含空格时加引号。Bash 脚本识别 `.venv/bin/python`，也识别 Git Bash 下的 `.venv/Scripts/python.exe`。
+安装脚本会检查 Python 和 Node.js 版本，自动寻找 Python 3.12，并支持 Windows 的 `py -3.12` 启动器。需要指定解释器时，PowerShell 使用 `-Python`，Bash 使用 `--python`，后接解释器名称或完整路径；路径包含空格时加引号。Bash 脚本识别 `.venv/bin/python`，也识别 Git Bash 下的 `.venv/Scripts/python.exe`。
+
+如果 PowerShell 提示禁止运行脚本，可先在当前终端执行 `Set-ExecutionPolicy -Scope Process Bypass`，再运行安装脚本。
 
 修改端口时，PowerShell 后端使用 `-Port 8035`，前端使用 `-Port 5175 -ApiPort 8035`；Bash 对应使用 `--port 8035` 和 `--port 5175 --api-port 8035`。后端热重载选项分别为 `-Reload` 和 `--reload`，各 Bash 脚本均支持 `--help`。
 
@@ -44,7 +53,7 @@
 
 分析助手能够解释统计概念、组合本地查询、回答变化问题，并引用可返回原记录的事实。联网解释使用当前实现支持的DeepSeek Search；其他OpenAI兼容服务仍可用于本地数据分析。真实调用需要服务商密钥，手动浏览图表和运行测试不调用模型。
 
-把 `.env.example` 复制为 `.env.local`，填写 `AIR_AI_BASE_URL`、`AIR_AI_MODEL`、`AIR_AI_API_KEY`。密钥只由后端读取，本地配置与会话数据库不进入 Git。环境变量可覆盖配置文件。前端不保存或接收服务密钥。
+图表与手动分析无需模型配置。启用 AI 助手时，把 `.env.example` 复制为 `.env.local`，填写 `AIR_AI_BASE_URL`、`AIR_AI_MODEL`、`AIR_AI_API_KEY`。密钥只由后端读取，本地配置与会话数据库不进入 Git。环境变量可覆盖配置文件。前端不保存或接收服务密钥。
 
 ## 数据与处理
 
