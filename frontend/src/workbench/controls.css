@@ -1,0 +1,74 @@
+.wb-select,.wb-month-picker { display:inline-flex; min-width:0; max-width:100%; vertical-align:middle; }
+.wb .wb-select-trigger,.wb .wb-month-trigger { display:inline-flex; align-items:center; justify-content:space-between; gap:14px; min-height:38px; padding:8px 11px; border:1px solid #d2dfe3; border-radius:9px; background:#fff; color:#304d5c; font-size:13px; font-weight:400; box-shadow:0 1px 3px #163d4403; white-space:nowrap; }
+.wb .wb-select-trigger:hover,.wb .wb-month-trigger:hover { border-color:#8fb8b8; background:#fbfdfd; box-shadow:0 2px 8px #21474e08; }
+.wb .wb-select-trigger[aria-expanded="true"],.wb .wb-month-trigger[aria-expanded="true"] { border-color:#4c9695; background:#f5fbfa; box-shadow:0 0 0 3px #18867e0d; }
+.wb-select-trigger > span { overflow:hidden; text-overflow:ellipsis; }
+.wb-select-trigger > svg,.wb-month-trigger > svg { color:#789198; flex-shrink:0; transition:transform .16s; }
+.wb-select-trigger[aria-expanded="true"] > svg,.wb-month-trigger[aria-expanded="true"] > svg:last-child { transform:rotate(180deg); }
+.wb-context > label:first-child .wb-select,.wb-context > label:first-child .wb-select-trigger { width:210px; }
+.wb-context > label .wb-select-trigger { font-size:14px; min-width:110px; }
+.wb-popover { z-index:40; overflow:hidden; display:flex; flex-direction:column; padding:6px; border:1px solid #dde8ea; border-radius:13px; background:#fff; box-shadow:0 14px 40px #173c491a,0 2px 8px #173c490a; font-family:"Microsoft YaHei","PingFang SC",sans-serif; color:#304d5c; font-size:13px; line-height:1.5; font-variant-numeric:tabular-nums; box-sizing:border-box; }
+.wb-popover * { box-sizing:border-box; }
+.wb-popover :focus-visible { outline:2px solid #286e77; outline-offset:2px; }
+.wb-select-search { display:flex; align-items:center; gap:8px; flex:0 0 auto; margin:4px 4px 3px; padding:9px 10px; background:#f3f7f7; border:1px solid #e5eded; border-radius:8px; color:#729098; }
+.wb-select-search input { width:100%; min-width:0; border:0; padding:0; outline:0!important; color:#254957; background:transparent; font:inherit; }
+.wb-select-search input::placeholder { color:#96a8af; }
+.wb-select-menu-heading { display:flex; align-items:center; justify-content:space-between; padding:9px 11px 6px; color:#8b9da5; font-size:10px; flex:0 0 auto; }
+.wb-select-menu-heading span { font-variant-numeric:tabular-nums; }
+.wb-select-list { overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#bdced1 transparent; max-height:280px; min-height:0; padding:1px 2px; outline:none!important; }
+.wb-select-option { display:flex; align-items:center; justify-content:space-between; gap:10px; border-radius:7px; padding:9px 10px; margin:2px 0; cursor:pointer; color:#405b68; min-height:38px; }
+.wb-select-option[data-active="true"] { background:#f0f6f5; }
+.wb-select-option[aria-selected="true"] { background:#eaf5f1; color:#126e70; }
+.wb-select-option[aria-disabled="true"] { opacity:.38; cursor:default; background:transparent; }
+.wb-select-option-copy { display:flex; flex-direction:column; gap:2px; }
+.wb-select-option-copy small { color:#7f959d; font-size:11px; }
+.wb-select-check { min-width:15px; color:#1b7a78; font-weight:600; }
+.wb-select-empty { margin:12px; color:#8a9da6; font-size:12px; }
+.wb-calendar { padding:14px; }
+.wb-calendar-caption { color:#8b9da5; font-size:11px; padding:0 1px 8px; }
+.wb-calendar-heading { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; flex:0 0 auto; }
+.wb-calendar button { font:inherit; color:#3c5b68; border:0; border-radius:7px; background:transparent; cursor:pointer; padding:7px; min-height:35px; }
+.wb-calendar button:hover:not(:disabled) { background:#edf5f3; }
+.wb-calendar button:disabled { opacity:.3; cursor:default; }
+.wb-calendar-heading > button:not(.wb-calendar-year) { width:32px; font-size:23px; padding:0; line-height:1; }
+.wb-calendar .wb-calendar-year { display:flex; gap:7px; align-items:center; font-size:14px; font-weight:600; }
+.wb-calendar-year svg { color:#789198; }
+.wb-calendar-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:5px; min-height:0; overflow-y:auto; overscroll-behavior:contain; }
+.wb-calendar-grid.is-years { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.wb-calendar-grid button { min-height:40px; font-size:13px; }
+.wb-calendar-grid button[aria-pressed="true"] { background:#16767b; color:#fff; font-weight:500; }
+.wb-calendar-grid button[aria-pressed="true"]:hover { background:#10676e; }
+.wb-calendar-hint { font-size:10px; color:#94a6ae; border-top:1px solid #edf2f3; padding-top:10px; margin:12px 1px 0; flex:0 0 auto; }
+.wb-time-range { display:flex; flex-wrap:wrap; align-items:center; gap:10px 15px; }
+.wb-control-caption { font-size:12px; color:#6d838d; }
+.wb-date-fields { display:flex; align-items:center; gap:9px; }
+.wb-date-fields > span:not(.wb-month-picker) { color:#8fa2aa; font-size:12px; }
+.wb .wb-month-trigger { gap:9px; }
+.wb-month-trigger > svg:first-child { color:#75989e; }
+.wb .wb-range-reset { border:0; padding:5px 8px; min-height:30px; background:transparent; color:#517982; font-size:12px; box-shadow:none; }
+.wb .wb-range-reset:hover { background:#e7f0ef; color:#216c72; }
+.wb-title-line { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; }
+.wb .wb-chart-help > button { display:inline-flex; align-items:center; gap:5px; border:0; min-height:29px; padding:3px 5px; background:transparent; color:#6a818a; font-size:11px; box-shadow:none; white-space:nowrap; }
+.wb .wb-chart-help > button > span { display:grid; place-items:center; width:14px; height:14px; border:1px solid #9bb1b6; border-radius:50%; font-size:10px; line-height:1; }
+.wb .wb-chart-help > button:hover,.wb .wb-chart-help > button[aria-expanded="true"] { color:#126e70; background:#eef6f3; }
+.wb-help-panel { padding:14px 16px 16px; gap:10px; overflow-y:auto; }
+.wb-help-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:12px; }
+.wb-help-heading button { display:grid; place-items:center; border:0; background:transparent; color:#70858d; width:26px; height:26px; padding:0; font-size:21px; cursor:pointer; }
+.wb-help-panel p { margin:0; color:#566f7b; font-size:12px; line-height:1.8; }
+.wb-matrix-key { display:flex; align-items:center; gap:6px; font-size:11px; color:#71868f; margin:7px 0 14px; }
+.wb-matrix-key i { width:12px; height:12px; background:#d8dddf; border-radius:2px; }
+.wb-open-month .wb-select-trigger { min-width:125px; }
+@media(max-width:600px) {
+ .wb-context > label:first-child .wb-select,.wb-context > label:first-child .wb-select-trigger { width:100%; }
+ .wb-context > label:has(.wb-select) { min-width:0; }
+ .wb-context > label .wb-select { width:100%; }
+ .wb-context > label .wb-select-trigger { width:100%; }
+ .wb .wb-select-trigger,.wb .wb-month-trigger { min-height:42px; }
+ .wb .wb-month-trigger { padding:8px 9px; gap:7px; font-size:12px; }
+ .wb-time-range { width:100%; gap:8px; }
+ .wb-control-caption { width:100%; }
+ .wb-date-fields { gap:8px; }
+ .wb-year-controls .wb-select-trigger { padding-inline:10px; gap:9px; }
+ .wb-detail-controls > label { flex-wrap:wrap; }
+}
+@media(prefers-reduced-motion:reduce) { .wb-popover,.wb-select-trigger > svg,.wb-month-trigger > svg { animation:none!important; transition:none!important; } }

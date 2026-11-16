@@ -1,0 +1,73 @@
+/* A single settings surface leaves the canvas visible from the first screen. */
+.wb-layout { display:grid; grid-template-columns:0 minmax(0,1fr); gap:0; align-items:start; transition:grid-template-columns .28s cubic-bezier(.22,1,.36,1),gap .28s cubic-bezier(.22,1,.36,1); }
+.wb-layout.has-settings { grid-template-columns:280px minmax(0,1fr); gap:24px; }
+.wb-canvas { min-width:0; }
+.wb-header-identity { display:flex; align-items:center; gap:15px; min-width:0; }
+.wb .wb-settings-trigger { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 13px; border-radius:11px; flex:0 0 auto; }
+.wb .wb-settings-trigger[aria-expanded="true"] { color:#176d73; border-color:#a9cdca; background:#eef7f4; }
+.wb-header-identity h1 { font-size:28px; }
+.wb-sidebar-slot { position:sticky; top:20px; min-width:0; height:calc(100dvh - 142px); min-height:260px; overflow:hidden; }
+.wb-sidebar { width:280px; height:100%; display:flex; flex-direction:column; border:1px solid #dce7e8; border-radius:17px; background:#fff; box-shadow:0 7px 24px #203e4805; overflow:hidden; visibility:hidden; pointer-events:none; transition:visibility 0s linear .3s; }
+.wb-sidebar[data-open="true"] { visibility:visible; pointer-events:auto; transition-delay:0s; }
+.wb-sidebar-heading { display:flex; align-items:center; justify-content:space-between; padding:18px 18px 14px; flex:0 0 auto; }
+.wb-sidebar-heading h2 { font-size:14px; font-weight:650; color:#375965; }
+.wb .wb-sidebar-heading > button { display:grid; place-items:center; padding:0; width:29px; min-height:29px; border:0; background:transparent; color:#7a929a; border-radius:8px; }
+.wb .wb-sidebar-heading > button:hover { color:#226b72; background:#edf5f3; }
+.wb-sidebar-body { min-height:0; overflow-y:auto; overflow-x:hidden; padding:0 15px 18px; scrollbar-width:thin; scrollbar-color:#bfd1d0 transparent; overscroll-behavior:contain; }
+.wb-sidebar .wb-tasks { display:grid; gap:4px; margin:0 0 18px; padding:0 0 17px; border:0; border-bottom:1px solid #e9efef; border-radius:0; background:transparent; width:100%; }
+.wb .wb-sidebar .wb-tasks button { display:flex; align-items:center; gap:11px; text-align:left; min-height:42px; padding:10px 12px; border:0; border-radius:10px; color:#607b86; font-size:13px; }
+.wb .wb-sidebar .wb-tasks button > svg { position:relative; z-index:1; flex:0 0 auto; }
+.wb .wb-sidebar .wb-tasks button[aria-current] { color:#146c72; }
+.wb-sidebar .wb-task-indicator { border-radius:10px; background:#e9f4f1; border-color:#d8eae4; box-shadow:none; }
+.wb-sidebar .wb-context { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; padding:0 0 18px; margin:0 0 17px; border:0; border-bottom:1px solid #e9efef; background:transparent; box-shadow:none; border-radius:0; }
+.wb-sidebar .wb-context > label,.wb-sidebar .wb-controls label:not(.wb-check),.wb-sidebar .wb-station-modes > label,.wb-sidebar .wb-month-filter > label { display:flex; flex-direction:column; align-items:stretch; gap:7px; font-size:11px; color:#70858e; }
+.wb-sidebar .wb-context .wb-select,.wb-sidebar .wb-context .wb-select-trigger,.wb-sidebar .wb-controls .wb-select,.wb-sidebar .wb-controls .wb-select-trigger,.wb-sidebar .wb-station-modes .wb-select,.wb-sidebar .wb-station-modes .wb-select-trigger,.wb-sidebar .wb-month-filter > label .wb-select,.wb-sidebar .wb-month-filter > label .wb-select-trigger { width:100%; }
+.wb .wb-sidebar .wb-context > label:first-child .wb-select,.wb .wb-sidebar .wb-context > label:first-child .wb-select-trigger { width:100%; }
+.wb-sidebar .wb-fixed-metric strong { font-size:14px; padding:0; }
+.wb-sidebar .wb-controls { display:flex; flex-direction:column; align-items:stretch; gap:17px; padding:0; min-height:0; margin:0; }
+.wb-sidebar .wb-time-range { display:flex; flex-direction:column; align-items:stretch; gap:9px; }
+.wb-sidebar .wb-date-fields { display:grid; grid-template-columns:minmax(0,1fr); gap:9px; }
+.wb-sidebar .wb-date-fields > label { display:grid!important; grid-template-columns:29px minmax(0,1fr); align-items:center!important; gap:6px!important; }
+.wb-sidebar .wb-date-fields .wb-month-picker,.wb-sidebar .wb-date-fields .wb-month-trigger { width:100%; }
+.wb-sidebar .wb-year-controls { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:end; gap:10px; }
+.wb-sidebar .wb-year-controls > span { display:none; }
+.wb-sidebar .wb-year-controls > button { grid-column:1/-1; min-height:30px; padding:4px 9px; font-size:11px; border-color:#e1ebeb; color:#527b83; }
+.wb-sidebar .wb-chart-controls { display:grid; gap:13px; }
+.wb-sidebar .wb-check { font-size:12px; align-items:center; gap:8px; }
+.wb-sidebar .wb-check input { flex:0 0 auto; }
+.wb-sidebar .wb-range-reset { align-self:flex-start; padding-left:0; font-size:11px; }
+.wb-sidebar .wb-extra-controls { display:flex; flex-direction:column; align-items:stretch; gap:15px; margin:18px 0 0; padding:17px 0 0; border-top:1px solid #e9efef; }
+.wb-sidebar .wb-subtasks { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; background:#f0f5f4; padding:3px; border-radius:9px; }
+.wb .wb-sidebar .wb-subtasks button { padding:7px 5px; font-size:11px; min-height:32px; background:transparent; border:0; border-radius:7px; }
+.wb .wb-sidebar .wb-subtasks button[aria-pressed="true"] { background:#fff; color:#166f74; box-shadow:0 2px 6px #2b53520c; }
+.wb-sidebar .wb-station-modes { display:grid; gap:13px; }
+.wb-sidebar .wb-month-filter { width:100%; margin:0; color:#527781; }
+.wb-sidebar .wb-month-filter > summary { font-size:12px; padding:4px 0; }
+.wb-sidebar .wb-month-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3px; margin:10px 0 14px; padding:0; }
+.wb-sidebar .wb-month-options label { display:flex; gap:5px; min-width:0; min-height:30px; font-size:11px; }
+.wb-sidebar .wb-month-options input { margin:0; }
+.wb-sidebar .wb-month-filter > button { margin-top:11px; font-size:11px; min-height:30px; padding:4px 8px; }
+.wb-sidebar .wb-episode-controls { display:grid; gap:10px; }
+.wb-sidebar .wb-episode-controls label { display:flex; flex-direction:row; justify-content:space-between; align-items:center; gap:5px; font-size:11px; }
+.wb-sidebar .wb-episode-controls input { width:63px; padding:5px 7px; min-height:34px; }
+.wb-sidebar .wb-episode-controls > button { min-height:33px; font-size:12px; background:#eef6f3; color:#1b7375; border-color:#d5e7e0; }
+.wb .wb-settings-backdrop { display:none; }
+@media (max-width:1050px) {
+  .wb-layout,.wb-layout.has-settings { grid-template-columns:minmax(0,1fr); gap:0; }
+  .wb-sidebar-slot { position:fixed; inset:0; width:0; height:0; min-height:0; overflow:visible; z-index:25; }
+  .wb-sidebar { position:fixed; left:12px; top:12px; bottom:12px; width:min(300px,calc(100vw - 24px)); height:auto; border-color:#ffffffb3; box-shadow:0 18px 65px #193e4930; }
+  .wb-sidebar-body { padding-bottom:24px; }
+  .wb .wb-settings-backdrop { display:block; position:fixed; inset:0; width:100%; min-height:0; padding:0; border:0; border-radius:0; background:#17364035; backdrop-filter:blur(2px); visibility:hidden; pointer-events:none; transition:visibility 0s linear .3s; }
+  .wb .wb-settings-backdrop:not([inert]) { visibility:visible; pointer-events:auto; transition-delay:0s; }
+}
+@media (max-width:600px) {
+  .wb-header-identity { gap:9px; width:100%; }
+  .wb-header-identity h1 { font-size:22px; }
+  .wb-header-identity .wb-eyebrow { font-size:10px; }
+  .wb .wb-settings-trigger { padding:9px; width:37px; min-height:37px; }
+  .wb-settings-trigger > span { display:none; }
+  .wb .wb-header-actions { width:auto; gap:5px; }
+  .wb .wb-header-actions button { font-size:11px; padding:7px 9px; }
+  .wb .wb-header { margin-bottom:19px; gap:13px; }
+}
+@media (prefers-reduced-motion:reduce) { .wb-layout { transition:none; } }
