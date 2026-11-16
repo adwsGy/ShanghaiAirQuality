@@ -1,0 +1,522 @@
+{
+  "inputs": [
+    {
+      "path": "data/raw/air_quality/_站点列表/站点列表-2021.01.01起.xlsx",
+      "sha256": "b5b6dcc43d6aea42fd89019c7a72d64550080aeacf51466810df1ec1649790a9",
+      "bytes": 119369,
+      "role": "station_metadata"
+    },
+    {
+      "path": "data/raw/air_quality/_站点列表/站点列表-2022.02.13起.xlsx",
+      "sha256": "24c15393a4365a1b60e4505e33332c6103c4b7f497b06da7eb17a855aa1dd012",
+      "bytes": 119612,
+      "role": "station_metadata"
+    },
+    {
+      "path": "data/raw/air_quality/_站点列表/站点列表-2025.02.25起.xlsx",
+      "sha256": "a5f0a1d995f8b26fe1ce69b15137e853adf9749fa66191dbf0583efa13cad5d0",
+      "bytes": 124349,
+      "role": "station_metadata"
+    },
+    {
+      "path": "data/raw/air_quality/城市_20150101-20151231.zip",
+      "sha256": "c3303bc598595b5f1498813c31a78ac53b5eab00d950e2f2b8881895fe64ff47",
+      "bytes": 47949235,
+      "mtime_ns": 1794665283492781900,
+      "role": "city_archive",
+      "archive_file_entries": 364,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20160101-20161231.zip",
+      "sha256": "9e47df26df17727b548f363657995ddd9c92bce5fff3e387c24bae8199963061",
+      "bytes": 48287892,
+      "mtime_ns": 1794665307832985700,
+      "role": "city_archive",
+      "archive_file_entries": 366,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20170101-20171231.zip",
+      "sha256": "eda452d24944d213af18d24afea4f368ed2fcab107adb5563a6eee3f23c19551",
+      "bytes": 46880750,
+      "mtime_ns": 1794665331967805500,
+      "role": "city_archive",
+      "archive_file_entries": 365,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20180101-20181231.zip",
+      "sha256": "298ec395ec770e08f5c90ecdef004b2fd0a1c5790bd9abc3cb5d6ef4b3ef079d",
+      "bytes": 44307363,
+      "mtime_ns": 1794665354920026000,
+      "role": "city_archive",
+      "archive_file_entries": 360,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20190101-20191231.zip",
+      "sha256": "09b6c92d10d8af78c196ee7f9bbc64045b46f76ea26cb7ee06d37365226d6a83",
+      "bytes": 44012761,
+      "mtime_ns": 1794665378163407400,
+      "role": "city_archive",
+      "archive_file_entries": 364,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20200101-20201231.zip",
+      "sha256": "e786e63a04f744e18344cb578f55ee49fece81e6350e761d5e845f21d7924dcc",
+      "bytes": 46923080,
+      "mtime_ns": 1794665403898654100,
+      "role": "city_archive",
+      "archive_file_entries": 366,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20210101-20211231.zip",
+      "sha256": "8b599450892d3e399301991b4965ffb2dd4af4116ce2d832bb067989bab694de",
+      "bytes": 47431880,
+      "mtime_ns": 1794665427814111100,
+      "role": "city_archive",
+      "archive_file_entries": 365,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20220101-20221231.zip",
+      "sha256": "c415a18c2cca9902d45cb7ff28feb101d4e623a6ff59d7d278477f168590109d",
+      "bytes": 43897121,
+      "mtime_ns": 1794665449631196000,
+      "role": "city_archive",
+      "archive_file_entries": 366,
+      "ignored_sidecar_entries": 1
+    },
+    {
+      "path": "data/raw/air_quality/城市_20230101-20231231.zip",
+      "sha256": "c0d0e22c9b2c3201c8ab75b541ad9c4a6cdd17c34338a5c0f05411931fe97bc2",
+      "bytes": 43503707,
+      "mtime_ns": 1794665472514817200,
+      "role": "city_archive",
+      "archive_file_entries": 365,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20240101-20241231.zip",
+      "sha256": "0c0d7e6a86b0ae261f5db61445c405354be370194ba19be562c9db22d445624c",
+      "bytes": 39857012,
+      "mtime_ns": 1794665498581904600,
+      "role": "city_archive",
+      "archive_file_entries": 366,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/城市_20250101-20251231.zip",
+      "sha256": "0899d7761419fb3a329b5fa798a3e17c32676f0218ab31ae1b784eb4996ba63b",
+      "bytes": 38305950,
+      "mtime_ns": 1794665518521741700,
+      "role": "city_archive",
+      "archive_file_entries": 367,
+      "ignored_sidecar_entries": 2
+    },
+    {
+      "path": "data/raw/air_quality/站点_20180101-20181231.zip",
+      "sha256": "b7653a23aa024cee07c9f62fe98192ee5732f43af1b688fdfef12d3555aceb43",
+      "bytes": 198047866,
+      "role": "legacy_error_check_only"
+    },
+    {
+      "path": "data/raw/air_quality/站点_20210101-20211231.zip",
+      "sha256": "b1a991b6d833797dd881122eda58e0f080fd7f57e6d0d5de87a6701e11e4de78",
+      "bytes": 243790136,
+      "mtime_ns": 1794666300472629700,
+      "role": "site_archive",
+      "archive_file_entries": 365,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/站点_20220101-20221231.zip",
+      "sha256": "c56344a3ada75457adfdd2736a4954f77d4b45c76672c07164b085bf3a99bddf",
+      "bytes": 237311055,
+      "mtime_ns": 1794666511093746700,
+      "role": "site_archive",
+      "archive_file_entries": 366,
+      "ignored_sidecar_entries": 1
+    },
+    {
+      "path": "data/raw/air_quality/站点_20230101-20231231.zip",
+      "sha256": "4314c8c4bbee19ebbcc3193935a8292cd4180f42847905d98ddcae27775548c4",
+      "bytes": 232121623,
+      "mtime_ns": 1794666556276757800,
+      "role": "site_archive",
+      "archive_file_entries": 365,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/站点_20240101-20241231.zip",
+      "sha256": "ae2642b6b49d3d0808dcf492a94c7e97839e4d581f8f428520653248e1c4c6a1",
+      "bytes": 203047917,
+      "mtime_ns": 1794666764923404700,
+      "role": "site_archive",
+      "archive_file_entries": 366,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/air_quality/站点_20250101-20251231.zip",
+      "sha256": "8cf65fa9ba933f085bb705b0eedd081bfbd9a1dabae30d19ef1e377c4d88ee35",
+      "bytes": 189301136,
+      "mtime_ns": 1794666697196352900,
+      "role": "site_archive",
+      "archive_file_entries": 365,
+      "ignored_sidecar_entries": 0
+    },
+    {
+      "path": "data/raw/geo/shanghai.json",
+      "sha256": "f699513d5eb63d56350018d90db92345aeefc88c9e4f76197ea405178b6c31ae",
+      "bytes": 83280,
+      "role": "map_geometry"
+    },
+    {
+      "path": "outputs/acquisition/2018-08_2018-12/round2/city_recovered_hours.csv",
+      "sha256": "558d948b22728643da6e21096ac1b004ea740f43175e3eb2fcd070580b2a9f9e",
+      "bytes": 13048,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "outputs/acquisition/2018-08_2018-12/round2/city_recovery_station_evidence.csv",
+      "sha256": "7d5a3c2eee86e77b0c0bcee4a0d6967947466c36e6672a039aa5626b4307f0aa",
+      "bytes": 93686,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "outputs/acquisition/2018-08_2018-12/round2/openaq_station_hourly.csv",
+      "sha256": "131b509816c61ee0d33fcb2d7756281b52de5b7fb814f51920d9b863014708a7",
+      "bytes": 1441789,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "outputs/acquisition/2018-08_2018-12/round2/openaq_acquisition.json",
+      "sha256": "f0d2f4d17e655cb15f1481c5632425f7e582dd681d5bdf8595d21cdd2943ac41",
+      "bytes": 135812,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "outputs/acquisition/2018-08_2018-12/round2/city_remaining_hours.csv",
+      "sha256": "b316282b4811606bd115e62d9369d9f8641ad22d7dda1e1563e7c920a2b7226c",
+      "bytes": 31557,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "outputs/acquisition/2018-08_2018-12/round2/city_hourly_with_recovery.csv",
+      "sha256": "a54e8fd6905fdfca1d4c14b763333b0223253dac7ac2b85913eb897de185582b",
+      "bytes": 342324,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "data/raw/air_quality/_站点列表/站点列表-2018.11.08起.xlsx",
+      "sha256": "d69bb63ff5b054fb879bd0216f4244527a2f5c898d82a3290e5c9ee2691a8411",
+      "bytes": 122469,
+      "role": "verified_2018_supplement"
+    },
+    {
+      "path": "data/raw/air_quality/站点_20180101-20181231.zip",
+      "sha256": "b7653a23aa024cee07c9f62fe98192ee5732f43af1b688fdfef12d3555aceb43",
+      "bytes": 198047866,
+      "role": "verified_2018_supplement"
+    }
+  ],
+  "code": {
+    "pipeline/build_data.py": "e4c6592a63a7577febfe8535f3b23096cf6195a8a00815243ba3f5ef06ccd1c0",
+    "analysis/metrics.py": "68f70a75afdc83e23df05788e0d02289ea0e55a50dab6bb769d7f7c77d1ac4a3",
+    "pipeline/apply_supplemental.py": "9900b92c6ae173dfce1fec91c9f619f5d3933de131fc8564d88b364b43331a93",
+    "pipeline/recover_city_hours_2018.py": "5c257739ac701d997a4ad8cca7071744ba3d26977edcdf45565cb613bf3e0f27",
+    "analysis/observed_metrics.py": "7431856050fd1b4aee2db0c952b16c1def1b5d84cafb28e51a3ee1b5ea3a6441",
+    "pipeline/refresh_statistics.py": "51f27ea708535b79d237f9a32f53df5ea91d44e44fa38f9e2ccce3089c1a3e4d",
+    "pipeline/unify_station_tables.py": "fbcfb7dd424a3e9a8a58b7cde4957ea0da5b354f9e20856329e68f50222232ca"
+  },
+  "rule_version": "pm25-observed-days-1.0.0",
+  "pipeline_version": "shanghai-pm25-1.0.0+supplemental-2018-1.0.0+observed-days-1.0.0",
+  "dataset_version": "sh-pm25-1318ae447557e3f0",
+  "contract_version": "0.1.0",
+  "build_status": "complete",
+  "timezone": "Asia/Shanghai",
+  "day_definition": "archive date, hours 0..23 inclusive; no timezone shifting",
+  "timezone_basis": "Research convention UTC+8; source CSV has date/hour labels but no explicit timezone offset.",
+  "unit": "μg/m³",
+  "quantile_method": "linear",
+  "policies": {
+    "observed-only": 0
+  },
+  "min_valid_hours": 1,
+  "annual_requires_all_months": false,
+  "core_ranges": {
+    "city": [
+      "2015-01-01",
+      "2025-12-31"
+    ],
+    "site": [
+      "2021-01-01",
+      "2025-12-31"
+    ]
+  },
+  "counts": {
+    "city_days": 4018,
+    "site_days": 40792,
+    "catalog_stations": 22,
+    "observed_station_codes": 20,
+    "reconstructed_city_hours": 69,
+    "additional_historical_station_hours": 835,
+    "observed_days": {
+      "city_archive": {
+        "days": 4018,
+        "observed_days": 4016
+      },
+      "site_archive": {
+        "days": 40792,
+        "observed_days": 34493
+      }
+    }
+  },
+  "outputs": {
+    "city_daily.csv": {
+      "sha256": "690d6d4994d484fdcbe030fb7811f761b4a9150d55c5f16ede770bb4a8f5488b",
+      "bytes": 1079202
+    },
+    "coverage.csv": {
+      "sha256": "9dd12774c9858d8d19d6d7b1e642bb4b551627bc38634b255e055690b6f391b1",
+      "bytes": 358614
+    },
+    "geometry_metadata.json": {
+      "sha256": "e38b4b5c2cedfc6adb8e5f1a114c3416db7abbb7dff72f8c8968640599da6a86",
+      "bytes": 475
+    },
+    "legacy_error_checks.csv": {
+      "sha256": "ece4b4c0e4d43fae862c4b171841388c15f71feaa5e69973832fd351fc2bc056",
+      "bytes": 434
+    },
+    "row_anomalies.csv": {
+      "sha256": "20e49b8dfcba4ba69e1118172800f4a7ffddc0d409bb0414702cdbd4decdd44f",
+      "bytes": 61
+    },
+    "site_daily.csv": {
+      "sha256": "d884c739537223ebb0373320c212633c3d2ad412539cc112f7a2aecb2fd192e6",
+      "bytes": 9877732
+    },
+    "site_metadata.csv": {
+      "sha256": "2f2b58e03dd2bacc1332d03b076d7e67a1084222cc88dc2a3d282736beecfe4b",
+      "bytes": 4842
+    },
+    "site_metadata_history.csv": {
+      "sha256": "c86f287d0932b0862e84b7fae8b9db92eb11d1bce8bcdfef7243262c8291fbfc",
+      "bytes": 10339
+    },
+    "source_file_audit.csv": {
+      "sha256": "e5d6d26724802c36e117a3b4bff3f226010e0f735379c9d6a1e674e7811c1fad",
+      "bytes": 1890857
+    },
+    "station_comparisons.csv": {
+      "sha256": "4fe033dba1e447a11caff78e4781463dc4e40504bdf3d4e332d8131bf1041001",
+      "bytes": 118649
+    },
+    "table_registry.json": {
+      "sha256": "7c3972f169e35cc1787630093162dff55250340fce7fc4696bf909894c7d9ae6",
+      "bytes": 1310
+    },
+    "geometry/shanghai.geojson": {
+      "sha256": "f699513d5eb63d56350018d90db92345aeefc88c9e4f76197ea405178b6c31ae",
+      "bytes": 83280
+    },
+    "hourly/city_archive_2015.csv.gz": {
+      "sha256": "a9a6c12266b442dbd387c710fe70678d8c0ed326c296ed7f2975e62a28a9972b",
+      "bytes": 35945
+    },
+    "hourly/city_archive_2016.csv.gz": {
+      "sha256": "dc2104e0ecf15be131c055cd5c08daef81e566d964e35d2f1203c7bdaf670cb2",
+      "bytes": 36922
+    },
+    "hourly/city_archive_2017.csv.gz": {
+      "sha256": "a5d5daa55214ca07264b11f09a6d23c22c6506b48ee7b967e2026c7eace0665e",
+      "bytes": 36126
+    },
+    "hourly/city_archive_2018.csv.gz": {
+      "sha256": "4bba154da2f69bcceb1717502c233b972b0f97106ebddf0ed34be98723f56d81",
+      "bytes": 36476
+    },
+    "hourly/city_archive_2019.csv.gz": {
+      "sha256": "4e307af60c0e2c8400cb1c1d22598b1a2da46a010fecb592d3210484fa3d697f",
+      "bytes": 35555
+    },
+    "hourly/city_archive_2020.csv.gz": {
+      "sha256": "3d27e2bf2c91980d806f68d971dd86fb2fd7cc80cd451b45f17dadada9d4a610",
+      "bytes": 35832
+    },
+    "hourly/city_archive_2021.csv.gz": {
+      "sha256": "56b68ee6a3a93ea301a329c5b071437094c6cb77768868a7726f91f60fb65c0c",
+      "bytes": 34423
+    },
+    "hourly/city_archive_2022.csv.gz": {
+      "sha256": "ed7541edbc66cc7866cf514571b655d3d4ef41e919616de03f376c7db42f748a",
+      "bytes": 33957
+    },
+    "hourly/city_archive_2023.csv.gz": {
+      "sha256": "c3cbf7e4b475415dfffed69f4e848a859bc242aec60cdba8edd395e27fdedda9",
+      "bytes": 34358
+    },
+    "hourly/city_archive_2024.csv.gz": {
+      "sha256": "136de64cc818fc03038cf82d3f657e92b6e0acaa4d591c4c5c9a2c617ded518b",
+      "bytes": 34407
+    },
+    "hourly/city_archive_2025.csv.gz": {
+      "sha256": "ecc14cda58a74878918d3434d1b60ae2254ee170b76979790c46c40501cb8c25",
+      "bytes": 33915
+    },
+    "hourly/site_archive_2018.csv.gz": {
+      "sha256": "4b2c5cd29b6bf2dc71a57d079257d92a0f112229b241711bb9984039dc2b8fec",
+      "bytes": 63632
+    },
+    "hourly/site_archive_2021.csv.gz": {
+      "sha256": "44993d564a26383d4e42f30c7b763a3597fa4c54fdd666d2b7c1ad830cd39194",
+      "bytes": 686433
+    },
+    "hourly/site_archive_2022.csv.gz": {
+      "sha256": "34c30c5ecd64b9b0b93d9af5ae181c1f17a7de9a63d248f497802de81d2d6664",
+      "bytes": 685007
+    },
+    "hourly/site_archive_2023.csv.gz": {
+      "sha256": "a8edac8b8c97cfeeaaf220c2422c0cd7daa3783e29d7d88c2e6bb0e7d6d2ba99",
+      "bytes": 689408
+    },
+    "hourly/site_archive_2024.csv.gz": {
+      "sha256": "dcbb7a68b65d1bc04af12bafc43f2b78eda88e3e484ff2d2d2f0327beff8831a",
+      "bytes": 685366
+    },
+    "hourly/site_archive_2025.csv.gz": {
+      "sha256": "cfbce5f64ff754fc20bbae52655355785fe293531f15c888e0a430d782506425",
+      "bytes": 664369
+    },
+    "supplemental/city_recovered_hours.csv": {
+      "sha256": "558d948b22728643da6e21096ac1b004ea740f43175e3eb2fcd070580b2a9f9e",
+      "bytes": 13048
+    },
+    "supplemental/city_recovery_evidence.csv": {
+      "sha256": "7d5a3c2eee86e77b0c0bcee4a0d6967947466c36e6672a039aa5626b4307f0aa",
+      "bytes": 93686
+    },
+    "supplemental/city_remaining_hours.csv": {
+      "sha256": "b316282b4811606bd115e62d9369d9f8641ad22d7dda1e1563e7c920a2b7226c",
+      "bytes": 31557
+    },
+    "supplemental/manifest.json": {
+      "sha256": "6ada93487ed911b134c5f5984d95889bfad91e5877cea9fc234917f012b8f202",
+      "bytes": 2116
+    }
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "pandas": "3.0.1",
+    "numpy": "2.3.5"
+  },
+  "build_seconds": 52.94,
+  "created_at": "2026-11-15T20:05:36.915539+08:00",
+  "supplemental": {
+    "version": "supplemental-2018-1.0.0",
+    "base_dataset_version": "sh-pm25-395444c8ef686a68",
+    "applied_city_hours": 69,
+    "additional_station_hours": 835,
+    "observed_station_hours_acquired": 4356,
+    "months": [
+      {
+        "month": "2018-08",
+        "expected_hours": 744,
+        "original_city_hours": 570,
+        "reconstructed_hours": 0,
+        "remaining_hours": 174,
+        "valid_days": 31
+      },
+      {
+        "month": "2018-12",
+        "expected_hours": 744,
+        "original_city_hours": 584,
+        "reconstructed_hours": 69,
+        "remaining_hours": 91,
+        "valid_days": 31
+      }
+    ],
+    "stations": [
+      {
+        "station_id": "1141A",
+        "name": "普陀",
+        "is_background": false
+      },
+      {
+        "station_id": "1142A",
+        "name": "十五厂",
+        "is_background": false
+      },
+      {
+        "station_id": "1143A",
+        "name": "虹口",
+        "is_background": false
+      },
+      {
+        "station_id": "1144A",
+        "name": "徐汇上师大",
+        "is_background": false
+      },
+      {
+        "station_id": "1145A",
+        "name": "杨浦四漂",
+        "is_background": false
+      },
+      {
+        "station_id": "1146A",
+        "name": "青浦淀山湖",
+        "is_background": true
+      },
+      {
+        "station_id": "1147A",
+        "name": "静安监测站",
+        "is_background": false
+      },
+      {
+        "station_id": "1148A",
+        "name": "浦东川沙",
+        "is_background": false
+      },
+      {
+        "station_id": "1149A",
+        "name": "浦东新区监测站",
+        "is_background": false
+      },
+      {
+        "station_id": "1150A",
+        "name": "浦东张江",
+        "is_background": false
+      }
+    ],
+    "method": "原城市值优先；缺失时仅用同小时完整九个评价站实测的算术均值重算，青浦背景站不参与城市均值；不插值。",
+    "historical_station_scope": "2018 年 8 月、12 月；独立观测明细，不加入 2021—2025 年度站点比较。",
+    "first_pass_additional_hours_included": 150,
+    "station_overlap_exact_matches": 3521,
+    "station_overlap_conflicts": 0
+  },
+  "statistics_update": {
+    "base_dataset_version": "sh-pm25-741ceb242e910377",
+    "policy_id": "observed-only",
+    "min_valid_hours": 1,
+    "min_observed_days": 1,
+    "require_all_months": false,
+    "mean_basis": "Arithmetic mean of available daily means; daily means use all available valid hours.",
+    "missing_values": "Excluded, never filled with zero."
+  },
+  "table_unification": {
+    "source_dataset_version": "sh-pm25-9e75159afb6efc90",
+    "historical_days_added": 620,
+    "observed_historical_days": 619,
+    "additional_station_hours": 835,
+    "canonical_hourly": "hourly/site_archive_2018.csv.gz",
+    "retired_data_tables": [
+      "supplemental/station_daily_2018.csv",
+      "supplemental/station_hourly_2018.csv.gz"
+    ],
+    "source_snapshot": "data/snapshots/sh-pm25-9e75159afb6efc90"
+  }
+}

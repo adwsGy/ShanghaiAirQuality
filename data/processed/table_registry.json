@@ -1,0 +1,53 @@
+{
+  "tables": {
+    "city_hourly": {
+      "key": [
+        "object_id",
+        "date",
+        "hour"
+      ],
+      "partitions": [
+        "hourly/city_archive_2015.csv.gz",
+        "hourly/city_archive_2016.csv.gz",
+        "hourly/city_archive_2017.csv.gz",
+        "hourly/city_archive_2018.csv.gz",
+        "hourly/city_archive_2019.csv.gz",
+        "hourly/city_archive_2020.csv.gz",
+        "hourly/city_archive_2021.csv.gz",
+        "hourly/city_archive_2022.csv.gz",
+        "hourly/city_archive_2023.csv.gz",
+        "hourly/city_archive_2024.csv.gz",
+        "hourly/city_archive_2025.csv.gz"
+      ]
+    },
+    "station_hourly": {
+      "key": [
+        "object_id",
+        "date",
+        "hour"
+      ],
+      "partitions": [
+        "hourly/site_archive_2018.csv.gz",
+        "hourly/site_archive_2021.csv.gz",
+        "hourly/site_archive_2022.csv.gz",
+        "hourly/site_archive_2023.csv.gz",
+        "hourly/site_archive_2024.csv.gz",
+        "hourly/site_archive_2025.csv.gz"
+      ]
+    },
+    "city_daily": {
+      "path": "city_daily.csv",
+      "key": [
+        "city_id",
+        "date"
+      ]
+    },
+    "station_daily": {
+      "path": "site_daily.csv",
+      "key": [
+        "station_id",
+        "date"
+      ]
+    }
+  }
+}

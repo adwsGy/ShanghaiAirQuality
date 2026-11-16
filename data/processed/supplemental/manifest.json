@@ -1,0 +1,82 @@
+{
+  "version": "supplemental-2018-1.0.0",
+  "base_dataset_version": "sh-pm25-395444c8ef686a68",
+  "applied_city_hours": 69,
+  "additional_station_hours": 835,
+  "observed_station_hours_acquired": 4356,
+  "months": [
+    {
+      "month": "2018-08",
+      "expected_hours": 744,
+      "original_city_hours": 570,
+      "reconstructed_hours": 0,
+      "remaining_hours": 174,
+      "valid_days": 31
+    },
+    {
+      "month": "2018-12",
+      "expected_hours": 744,
+      "original_city_hours": 584,
+      "reconstructed_hours": 69,
+      "remaining_hours": 91,
+      "valid_days": 31
+    }
+  ],
+  "stations": [
+    {
+      "station_id": "1141A",
+      "name": "普陀",
+      "is_background": false
+    },
+    {
+      "station_id": "1142A",
+      "name": "十五厂",
+      "is_background": false
+    },
+    {
+      "station_id": "1143A",
+      "name": "虹口",
+      "is_background": false
+    },
+    {
+      "station_id": "1144A",
+      "name": "徐汇上师大",
+      "is_background": false
+    },
+    {
+      "station_id": "1145A",
+      "name": "杨浦四漂",
+      "is_background": false
+    },
+    {
+      "station_id": "1146A",
+      "name": "青浦淀山湖",
+      "is_background": true
+    },
+    {
+      "station_id": "1147A",
+      "name": "静安监测站",
+      "is_background": false
+    },
+    {
+      "station_id": "1148A",
+      "name": "浦东川沙",
+      "is_background": false
+    },
+    {
+      "station_id": "1149A",
+      "name": "浦东新区监测站",
+      "is_background": false
+    },
+    {
+      "station_id": "1150A",
+      "name": "浦东张江",
+      "is_background": false
+    }
+  ],
+  "method": "原城市值优先；缺失时仅用同小时完整九个评价站实测的算术均值重算，青浦背景站不参与城市均值；不插值。",
+  "historical_station_scope": "2018 年 8 月、12 月；独立观测明细，不加入 2021—2025 年度站点比较。",
+  "first_pass_additional_hours_included": 150,
+  "station_overlap_exact_matches": 3521,
+  "station_overlap_conflicts": 0
+}

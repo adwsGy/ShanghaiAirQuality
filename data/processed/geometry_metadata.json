@@ -1,0 +1,14 @@
+{
+  "source_file": "data/raw/geo/shanghai.json",
+  "sha256": "f699513d5eb63d56350018d90db92345aeefc88c9e4f76197ea405178b6c31ae",
+  "feature_count": 16,
+  "bbox": [
+    120.856804,
+    30.675593,
+    122.247149,
+    31.872716
+  ],
+  "source_crs": "unspecified",
+  "coordinate_status": "unverified",
+  "note": "GeoJSON and station tables do not declare a coordinate reference system. Range checks pass, but no datum conversion or spatial accuracy claim is made."
+}
